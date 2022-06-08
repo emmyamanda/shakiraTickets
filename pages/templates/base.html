@@ -31,9 +31,11 @@
                 Live Shows
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="/live-show/tokyo">Tokyo</a>
-                <a class="dropdown-item" href="/live-show/london">London</a>
-                <a class="dropdown-item" href="/live-show/berlin">Berlin</a>
+                {% for liveShow in liveShows %}
+                <div class="row">
+                    <a class="dropdown-item" href="/live-show/{{liveShow.location}}">{{liveShow.location}}</a>
+                </div>
+            {% endfor %}
               </div>
             </li>
           </ul>
