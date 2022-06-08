@@ -2,16 +2,11 @@
 
 {% block content %}
 <div class="container">
-    <div class="row">
-      <div class="col-sm">
-        Tokyo Live Show
-      </div>
-      <div class="col-sm">
-        London Live Show
-      </div>
-      <div class="col-sm">
-        Berlin Live Show
-      </div>
-    </div>
-  </div>
+    {% for liveShow in liveShows %}
+            <div class="row">
+                <!-- TODO: Add some HTML to display the locations and any data from Mongodb -->
+                 {{liveShow.location}}
+            </div>
+        {% endfor %}
+        </div>
 {% endblock %}
