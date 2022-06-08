@@ -17,3 +17,8 @@ def aboutUs(request):
     template = loader.get_template('about-us.html')
     context = {}
     return HttpResponse(template.render(context, request))
+
+def liveShow(request, liveShow):
+    template = loader.get_template('live-show-' + liveShow + '.html')
+    context = {}
+    return HttpResponse(template.render(context, request))
