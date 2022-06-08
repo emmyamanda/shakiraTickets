@@ -7,25 +7,23 @@ import pymongo
 from django.http import HttpResponse
 from django.template import loader
 
-def fetchLiveShowContext():
+def index(request):
+    template = loader.get_template('index.html')
     client = pymongo.MongoClient("mongodb+srv://root:mjaFCaDuVWcYLybT@myfirstcluster.uaxcr.mongodb.net/?retryWrites=true&w=majority")
     db = client["shakira_tickets"]
     liveShows = db["live_shows"]
     context = {'liveShows': liveShows.find({})}
-    return context
 
+#    for show in liveShows.find():
 
-def index(request):
-    liveShowsContext = fetchLiveShowContext()
-    template = loader.get_template('index.html')
-    return HttpResponse(template.render(liveShowsContext, request))
+    return HttpResponse(template.render(context, request))
 
 def aboutUs(request):
-    liveShowsContext = fetchLiveShowContext()
     template = loader.get_template('about-us.html')
-    return HttpResponse(template.render(liveShowsContext, request))
+    context = {}
+    return HttpResponse(template.render(context, request))
 
 def liveShow(request, liveShow):
-    liveShowsContext = fetchLiveShowContext()
     template = loader.get_template('live-show-' + liveShow + '.html')
-    return HttpResponse(template.render(liveShowsContext, request))
+    context = {}
+    return HttpResponse(template.render(context, request))
